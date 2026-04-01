@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:payment_app/core/utils/app_router.dart';
 import 'package:payment_app/core/utils/assets_data.dart';
 import 'package:payment_app/core/utils/widgets/custom_button.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/order_info_item_view.dart';
@@ -19,9 +21,7 @@ class MyCartViewBody extends StatelessWidget {
               child: Image.asset(AssetsData.basketImage),
             ),
           ),
-          SizedBox(
-            height: 25,
-          ),
+          SizedBox(height: 25),
           OrderInfoItemView(),
           Divider(
             height: 32,
@@ -31,13 +31,14 @@ class MyCartViewBody extends StatelessWidget {
             color: Color(0xffBFBFBF),
           ),
           TotalPrice(),
-          SizedBox(
-            height: 16,
+          SizedBox(height: 16),
+          CustomButton(
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kPaymentDetailsView);
+            },
+            text: "Complete Payment",
           ),
-          CustomButton(onTap: (){}, text: "Complete Payment"),
-          SizedBox(
-            height: 15,
-          )
+          SizedBox(height: 15),
         ],
       ),
     );
