@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:payment_app/core/utils/app_router.dart';
 import 'package:payment_app/core/utils/widgets/custom_button.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/custom_credit_card.dart';
 import 'package:payment_app/features/checkout/presentation/views/widgets/payment_item_view.dart';
@@ -41,6 +43,7 @@ class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                     } else {
+                      GoRouter.of(context).push(AppRouter.kThankYouView);
                       setState(() {
                         autovalidateMode = AutovalidateMode.always;
                       });
